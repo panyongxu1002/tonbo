@@ -1,6 +1,51 @@
 import Image from 'next/image';
+import { CodeEditor } from "./CodeEditor";
+import { useEffect, useRef } from 'react';
 
 export const DesktopView = () => {
+  const workerRef = useRef<Worker | null>(null);
+
+  useEffect(() => {
+    // 创建 Worker
+    workerRef.current = new Worker(
+      new URL('../workers/tonbo.worker.ts', import.meta.url),
+      { type: 'module' }
+    );
+
+    // 监听 Worker 消息
+    workerRef.current.onmessage = (e) => {
+      switch (e.data.type) {
+        case 'init':
+          console.log('TonboLite initialized');
+          break;
+        case 'query':
+          console.log('Query result:', e.data.result);
+          break;
+        case 'error':
+          console.error('TonboLite error:', e.data.error);
+          break;
+      }
+    };
+
+    // 初始化 TonboLite
+    workerRef.current.postMessage({ type: 'init' });
+
+    // 清理函数
+    return () => {
+      workerRef.current?.terminate();
+    };
+  }, []);
+
+  const handleEditorChange = (value: string | undefined) => {
+    if (value && workerRef.current) {
+      // 发送查询到 Worker
+      workerRef.current.postMessage({
+        type: 'query',
+        sql: value
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#1A1D1A] text-white px-[130px] ">
       {/* 导航栏 */}
@@ -76,6 +121,16 @@ export const DesktopView = () => {
               <div className="absolute top-8 left-8 transform -rotate-12 bg-[#7C3AED] w-8 h-24"></div>
             </div>
           </div>
+        </div>
+
+        {/* 编辑器部分 */}
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold mb-6">Try it out</h2>
+          <CodeEditor 
+            defaultLanguage="sql"
+            defaultValue={`SELECT * FROM tonbo LIMIT 10;`}
+            onChange={handleEditorChange}
+          />
         </div>
 
         <div className="mt-12">
