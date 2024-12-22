@@ -41,7 +41,7 @@ SELECT * from user
                 <CodeEdit
                   value={defaultValue}
                   height="330px"
-                  onChange={getCode}
+                  onChange={(value: string | undefined) => getCode(value || '')}
                 />
               </div>
             </div>
@@ -67,7 +67,7 @@ SELECT * from user
                 <CodeEdit
                   value={defaultValue}
                   height="330px"
-                  onChange={getCode}
+                  onChange={(value: string | undefined) => getCode(value || '')}
                 />
               </div>
               <div className="mx-auto w-[362px] h-[50px] text-center leading-[50px] bg-[#1a1c1a] border border-solid border-[#444b46] rounded-[50px] mt-8">
