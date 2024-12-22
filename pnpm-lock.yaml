@@ -17,6 +17,9 @@ dependencies:
   react-dom:
     specifier: ^19.0.0
     version: 19.0.0(react@19.0.0)
+  sqlite-tonbo:
+    specifier: file:src/pkg
+    version: file:src/pkg
 
 devDependencies:
   '@eslint/eslintrc':
@@ -3664,3 +3667,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  file:src/pkg:
+    resolution: {directory: src/pkg, type: directory}
+    name: sqlite-tonbo
+    dev: false

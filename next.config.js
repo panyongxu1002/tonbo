@@ -1,24 +1,78 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config,) => {
-    // Web Worker 支持
+  headers: async () => [
+    {
+      source: '/:path*',
+      headers: [
+        {
+          key: 'Cross-Origin-Opener-Policy',
+          value: 'same-origin',
+        },
+        {
+          key: 'Cross-Origin-Opener-Policy-Report-Only',
+          value: 'same-origin',
+        },
+        {
+          key: 'Cross-Origin-Embedder-Policy',
+          value: 'require-corp',
+        },
+        {
+          key: 'Access-Control-Allow-Origin',
+          value: '*',
+        },
+      ],
+    },
+  ],
+  webpack: (config) => {
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true,
+      asyncWebAssembly: true,
+    }
+
     config.module.rules.push({
       test: /\.worker\.(js|ts)$/,
-      loader: 'worker-loader',
-      options: {
-        filename: 'static/[hash].worker.js',
-        publicPath: '/_next/',
+      use: {
+        loader: 'worker-loader',
+        options: {
+          filename: 'static/workers/[name].js',
+          publicPath: '/_next/',
+          esModule: true,
+        },
       },
     });
 
-    // 添加跨域头
-    config.headers = {
-      'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Embedder-Policy': 'require-corp',
-      'Cross-Origin-Resource-Policy': 'same-origin'
+    config.output = {
+      ...config.output,
+      publicPath: '/_next/',
+      globalObject: 'self',
     };
 
-    return config;
+    // config.module.rules.push({
+    //   test: /sqlite_tonbo\.js$/,
+    //   use: {
+    //     loader: 'babel-loader',
+    //     options: {
+    //       presets: ['@babel/preset-env']
+    //     }
+    //   }
+    // });
+
+    return config
+  },
+  devServer: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/_next/static/workers/:path*',
+        destination: '/_next/static/workers/:path*',
+      },
+    ];
   },
 }
 
