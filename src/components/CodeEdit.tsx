@@ -1,10 +1,12 @@
 "use client";
-import dynamic from 'next/dynamic';
 import React from "react";
+import Editor, { loader } from '@monaco-editor/react';
 
-// 动态导入 Monaco Editor
-const MonacoEditor = dynamic(() => import('@monaco-editor/react'), {
-  ssr: false,
+
+loader.config({
+  paths: {
+    vs: '/vs',
+  },
 });
 
 interface MySQLEditorProps {
@@ -22,8 +24,9 @@ const CodeEdit: React.FC<MySQLEditorProps> = ({
   width = "100%",
   disabled,
 }) => {
+ 
   return (
-    <MonacoEditor
+    <Editor
       height={height}
       width={width}
       language="sql"
