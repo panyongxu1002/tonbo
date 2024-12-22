@@ -96,14 +96,8 @@ export const DesktopView = () => {
           {/* 2.2 简介 */}
           <div className="mt-8 bg-[#2f3330] px-6 py-4 rounded-lg text-lg">
             <div className="leading-[26px]">
-              TonboLite lets you create analysis-ready SQLite tables stored
-              either locally or directly in S3-backed Parquet files. This makes
-              it simple to transform data from your existing SQL stack—running
-              at the edge—and to scale into a vendor-agnostic data warehouse.
-              With TonboLite, you can use SQLite or any Parquet-compatible tool
-              (e.g., Datafusion, Pandas, DuckDB) to build pay-as-you-go
-              observability, visualization, AI training, and other data
-              processing solutions.
+            Simple to transform data from existing SQL stack, running at the edge, and to scale into a vendor-agnostic data warehouse.
+            Use SQLite or any Parquet-compatible tool to build pay-as-you-go processing solutions.
             </div>
             <div className="mt-4 w-[223px] h-[48px] text-center leading-[48px] bg-[#222623] rounded-[50px] border border-solid border-[#F5FF0B] cursor-pointer">
               Explore Architecture

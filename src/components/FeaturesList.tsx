@@ -7,12 +7,10 @@ export default function FeaturesList() {
           style={{ boxShadow: "4px 8px 0px 0px #F5FF0B" }}
         >
           <div className="text-2xl text-white font-semibold">
-            No Vendor Lock-In
+            Without vendor lock-in
           </div>
           <div className="mt-4 text-base text-[#E6E6E6]">
-            TonboLite relies on standard object storage protocols and
-            open-source formats. Store data on AWS, Cloudflare, or your own
-            MinIO setup—maintaining full control and flexibility.
+            TonboLite relies on standard object storage protocols and open-source formats. Store data on AWS, Cloudflare, or your own MinIO setup—maintaining full control and flexibility.
           </div>
         </div>
         <div
