@@ -3,9 +3,9 @@ import FeaturesList from "./FeaturesList";
 
 export const DesktopView = () => {
   return (
-    <div className="min-h-screen bg-[#1A1D1A] text-white px-[130px] ">
+    <div className="min-h-screen bg-[#222623] text-white">
       {/* 导航栏 */}
-      <nav className="flex items-center justify-between px-8 py-4">
+      <nav className="flex items-center justify-between p-4 sticky top-0 z-[999] bg-[#222623] px-[142px]">
         <div className="flex items-center">
           <a href="https://tonbo.io/">
             <Image
@@ -65,63 +65,66 @@ export const DesktopView = () => {
         </div>
       </nav>
 
-      {/* 主要内容区域 */}
-      <div className="container mx-auto  py-16">
-        <div className="bg-[#CCFF00] rounded-xl p-16 relative overflow-hidden">
-          <div className="max-w-2xl">
-            <h2 className="text-black text-5xl font-bold mb-4">
-              TonboLite:
-              <br />
-              Analysis-ready
-              <br />
-              SQLite tables,
-              <br />
+      <div className="px-[236px]">
+        {/* 主要内容区域 */}
+        <div className="container pt-16 pb-24">
+          <div className="bg-[#F5FF0B] relative h-[434px]">
+            <Image
+              src="/home/banner.png"
+              alt="banner"
+              width={478}
+              height={380}
+              className="absolute top-0 left-[50%] transform -translate-x-[50%]"
+            />
+            <div className="text-5xl font-bold text-[#222623] leading-[58px] absolute bottom-0 left-4">
+              TonboLite: <br /> Analysis-ready <br /> SQLite tables, <br />{" "}
               scalable with S3
-            </h2>
-            <p className="text-black/80 text-lg mt-8 mb-12">
-              Simple to transform data from existing SQL stack, running at the
-              edge, and to scale into a vendor-agnostic data warehouse.
-            </p>
-            <div className="flex gap-4">
-              <button className="bg-[#7C3AED] text-white px-8 py-3 rounded-full hover:bg-[#6D28D9] transition">
-                Star on GitHub
-              </button>
-              <button className="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition">
+            </div>
+            <div className="absolute right-4 bottom-6 flex">
+              <a href="https://github.com/tonbo-io/sqlite-tonbo">
+                <div className="w-[171px] h-[50px] bg-[#654FF0] rounded-[50px] leading-[50px] text-center cursor-pointer">
+                  Star on GitHub
+                </div>
+              </a>
+              <div className="w-[164px] h-[50px] bg-[#222623] rounded-[50px] leading-[50px] text-center cursor-pointer ml-6">
                 Join WaitList
-              </button>
+              </div>
             </div>
           </div>
 
-          {/* 装饰性图形 */}
-          <div className="absolute right-16 top-1/2 -translate-y-1/2">
-            <div className="relative w-64 h-64">
-              <div className="absolute transform rotate-45 bg-white w-32 h-32 border-2 border-black"></div>
-              <div className="absolute top-8 left-8 transform -rotate-12 bg-[#7C3AED] w-8 h-24"></div>
+          {/* 2.2 简介 */}
+          <div className="mt-8 bg-[#2f3330] px-6 py-4 rounded-lg text-lg">
+            <div className="leading-[26px]">
+              TonboLite lets you create analysis-ready SQLite tables stored
+              either locally or directly in S3-backed Parquet files. This makes
+              it simple to transform data from your existing SQL stack—running
+              at the edge—and to scale into a vendor-agnostic data warehouse.
+              With TonboLite, you can use SQLite or any Parquet-compatible tool
+              (e.g., Datafusion, Pandas, DuckDB) to build pay-as-you-go
+              observability, visualization, AI training, and other data
+              processing solutions.
+            </div>
+            <div className="mt-4 w-[223px] h-[48px] text-center leading-[48px] bg-[#222623] rounded-[50px] border border-solid border-[#F5FF0B] cursor-pointer">
+              Explore Architecture
             </div>
           </div>
         </div>
 
-        <div className="mt-12">
-          <button className="border border-[#CCFF00] text-[#CCFF00] px-8 py-3 rounded-full hover:bg-[#CCFF00] hover:text-black transition">
-            Explore Architecture
-          </button>
+        {/* Features List */}
+        <FeaturesList />
+
+        {/* 底部 */}
+        <div className="flex justify-between items-center text-[#78817A] box-content p-4 h-[66px] border-t border-[#444b46] border-solid relative mt-8">
+          <div>Copyright Ⓒ 2024 – Tonbo IO, Inc.</div>
+          <div>Edit this page on GitHub</div>
+          <Image
+            src="/home/footer-img.svg"
+            alt="footer"
+            width={143}
+            height={66}
+            className="absolute left-[-55px] top-[-34px]"
+          />
         </div>
-      </div>
-
-      {/* Features List */}
-      <FeaturesList />
-
-      {/* 底部 */}
-      <div className="flex justify-between items-center text-[#78817A] box-content p-4 h-[66px] border-t border-[#444b46] border-solid relative mt-8">
-        <div>Copyright Ⓒ 2024 – Tonbo IO, Inc.</div>
-        <div>Edit this page on GitHub</div>
-        <Image
-          src="/home/footer-img.svg"
-          alt="footer"
-          width={143}
-          height={66}
-          className="absolute left-[-55px] top-[-34px]"
-        />
       </div>
     </div>
   );
