@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FeaturesList from "./FeaturesList";
 import NavGroup from "./NavGroup";
+import CodeBox from "./CodeBox";
 
 const SearchSvg = () => {
   return (
@@ -105,6 +106,9 @@ export const MobileView = () => {
           Explore Architecture
         </div>
       </div>
+
+      {/* Code Edit */}
+      <CodeBox />
 
       {/* Features List */}
       <FeaturesList />

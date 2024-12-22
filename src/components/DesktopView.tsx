@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FeaturesList from "./FeaturesList";
+import CodeBox from "./CodeBox";
 
 export const DesktopView = () => {
   return (
@@ -109,6 +110,9 @@ export const DesktopView = () => {
             </div>
           </div>
         </div>
+
+        {/* Code Edit */}
+        <CodeBox />
 
         {/* Features List */}
         <FeaturesList />
