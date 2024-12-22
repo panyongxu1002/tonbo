@@ -66,7 +66,7 @@ export const DesktopView = () => {
         </div>
       </nav>
 
-      <div className="px-[236px]">
+      <div className=" w-[1128px] m-auto">
         {/* 主要内容区域 */}
         <div className="container pt-16 pb-24">
           <div className="bg-[#F5FF0B] relative h-[434px]">
