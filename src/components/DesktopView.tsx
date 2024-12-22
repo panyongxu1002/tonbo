@@ -6,7 +6,7 @@ export const DesktopView = () => {
   return (
     <div className="min-h-screen bg-[#222623] text-white">
       {/* 导航栏 */}
-      <nav className="flex items-center justify-between p-4 sticky top-0 z-[999] bg-[#222623] px-[142px]">
+      <nav className="flex items-center justify-between p-4 sticky top-0 z-[999] bg-[#222623] px-[142px] border-b border-solid border-[#444a46]">
         <div className="flex items-center">
           <a href="https://tonbo.io/">
             <Image
