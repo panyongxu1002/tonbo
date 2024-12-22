@@ -50,8 +50,12 @@ const NavGroup = () => {
         <DropdownMenuGroup>
           <DropdownMenuItem>Blogs</DropdownMenuItem>
           <DropdownMenuItem>Docs</DropdownMenuItem>
-          <DropdownMenuItem>Discord</DropdownMenuItem>
-          <DropdownMenuItem>X</DropdownMenuItem>
+          <DropdownMenuItem>
+            <a href="https://discord.gg/j27XVFVmJM">Discord</a>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <a href="https://x.com/tonboio">X</a>
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
